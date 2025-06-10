@@ -1,0 +1,13 @@
+/* Estilos extraídos de index.html */
+
+
+    body {
+      background-image: url('img/fondito.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      /* Opcional: para que el texto se vea mejor */
+      color: #fff;
+      font-family: Arial, sans-serif;
+    }
+  

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <title>Pago - FERREMAS</title>
+  <link href="css/estilos.css" rel="stylesheet"/>
+  <link href="css/carrito.css" rel="stylesheet"/>
+</head>
+<body>
+  <h2>Opciones de Pago</h2>
+  <h3 id="montoTexto">Cargando monto...</h3>
+  <p id="valorDolar">Valor del dólar hoy: Cargando...</p>
+
+  <button onclick="pagarTransbank()">Pagar con Webpay</button>
+  <button onclick="mostrarTransferencia()">Pago por Transferencia</button>
+
+  <div id="datosTransferencia" style="display:none;">
+    <h3>Datos para Transferencia</h3>
+    <p>Banco: Banco Estado</p>
+    <p>Cuenta: 12345678</p>
+    <p>RUT: 12.345.678-9</p>
+    <p>FERREMAS SpA</p>
+  </div>
+
+  <script>
+    // Obtener monto desde la URL
+    const params = new URLSearchParams(window.location.search);
+    const monto = params.get('monto') || 1000;
+    document.getElementById('montoTexto').textContent = `Monto a pagar: $${monto} CLP`;
+
+    // Mostrar valor del dólar
+    fetch('http://localhost:3000/api/dolar')
+      .then(res => res.json())
+      .then(data => {
+        const valor = data.valor_dolar || "No disponible";
+        document.getElementById('valorDolar').textContent = `Valor del dólar hoy: $${valor} CLP`;
+      })
+      .catch(() => {
+        document.getElementById('valorDolar').textContent = 'Valor del dólar hoy: error al cargar';
+      });
+
+    function pagarTransbank() {
+      fetch('/api/webpay/crear', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ monto: monto })
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.url && data.token) {
+          const form = document.createElement('form');
+          form.method = 'POST';
+          form.action = data.url;
+
+          const input = document.createElement('input');
+          input.type = 'hidden';
+          input.name = 'token_ws';
+          input.value = data.token;
+
+          form.appendChild(input);
+          document.body.appendChild(form);
+          form.submit();
+        } else {
+          alert('Error al iniciar pago.');
+        }
+      })
+      .catch(err => {
+        console.error('Error al conectar con WebPay:', err);
+        alert('Error al procesar el pago.');
+      });
+    }
+
+    function mostrarTransferencia() {
+      document.getElementById('datosTransferencia').style.display = 'block';
+    }
+  </script>
+</body>
+</html>

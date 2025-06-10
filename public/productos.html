@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<title>Herramientas - FERREMAS</title>
+<link href="css/estilos.css" rel="stylesheet"/>
+<link href="css/productos.css" rel="stylesheet"/></head>
+<body>
+<h2>Lista de Herramientas</h2>
+<div id="productos"></div>
+<script src="js/api.js"></script>
+<script>
+    const contenedor = document.getElementById('productos');
+    fetchProductos().then(productos => {
+      productos.forEach(p => {
+        contenedor.innerHTML += `<p>${p.nombre}: $${p.precio}</p>`;
+      });
+    });
+  </script>
+</body>
+</html>

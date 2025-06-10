@@ -1,0 +1,36 @@
+/* Estilos extraídos de suscripcion.html */
+
+
+    .contenedor-suscripcion {
+      max-width: 400px;
+      margin: 80px auto;
+      padding: 20px;
+      text-align: center;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background-color: #f9f9f9;
+    }
+
+    .contenedor-suscripcion input {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+      font-size: 14px;
+    }
+
+    .boton-negro {
+      width: 90%;
+      background-color: black;
+      color: white;
+      padding: 10px;
+      margin-top: 10px;
+      border: none;
+      border-radius: 4px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .boton-negro:hover {
+      background-color: #333;
+    }
+  

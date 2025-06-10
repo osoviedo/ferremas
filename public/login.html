@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<title>Login - FERREMAS</title>
+<link href="css/estilos.css" rel="stylesheet"/>
+<link href="css/login.css" rel="stylesheet"/></head>
+<body>
+<div class="contenedor-login">
+<h2>Iniciar Sesión</h2>
+<form id="loginForm">
+<input id="nombre" placeholder="Nombre" required="" type="text"/>
+<input id="password" placeholder="Contraseña" required="" type="password"/>
+<button class="boton-negro" type="submit">Iniciar Sesión</button>
+</form>
+<!-- Botón Regresar al Inicio -->
+<button class="boton-negro" onclick="location.href='index.html'">Regresar al Inicio</button>
+<p id="mensaje"></p>
+</div>
+<script>
+    document.getElementById('loginForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const nombre = document.getElementById('nombre').value;
+      const contraseña = document.getElementById('password').value;
+
+      try {
+        const response = await fetch('http://localhost:3000/api/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ nombre, contraseña }),
+        });
+
+        const data = await response.json();
+        document.getElementById('mensaje').textContent = response.ok ? data.mensaje : data.error;
+      } catch (err) {
+        document.getElementById('mensaje').textContent = 'Error al conectar con el servidor.';
+        console.error(err);
+      }
+    });
+  </script>
+</body>
+</html>

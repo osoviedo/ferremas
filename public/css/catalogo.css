@@ -1,0 +1,62 @@
+/* Estilos extraídos de catalogo.html */
+
+
+    .btn-volver-inicio {
+  display: inline-block;
+  background-color: #2d6a4f;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-volver-inicio:hover {
+  background-color: #1b4332;
+}
+
+    .contenedor-productos {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+    .producto {
+      border: 1px solid #ccc;
+      padding: 15px;
+      width: 280px;
+      text-align: center;
+      border-radius: 10px;
+      background-color: #f9f9f9;
+    }
+    .producto img {
+      width: 100%;
+      height: auto;
+      border-radius: 5px;
+    }
+    .producto h3 {
+      margin: 10px 0;
+    }
+    .descripcion {
+      font-size: 0.9em;
+      margin-bottom: 10px;
+    }
+    .precio {
+      font-weight: bold;
+      color: #2d6a4f;
+      margin-bottom: 10px;
+    }
+    .btn-agregar-carrito {
+      background-color: #2d6a4f;
+      color: white;
+      padding: 8px 12px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .btn-agregar-carrito:hover {
+      background-color: #1b4332;
+    }
+  

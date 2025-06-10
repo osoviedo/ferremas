@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<title>Crear Cuenta - FERREMAS</title>
+<link href="css/estilos.css" rel="stylesheet"/>
+
+<link href="css/crearcuenta.css" rel="stylesheet"/></head>
+<body>
+<div class="contenedor-login">
+<h2>Crear Cuenta</h2>
+<form id="registroForm">
+<input id="nombre" placeholder="Nombre" required="" type="text"/>
+<input id="correo" placeholder="Correo electrónico" required="" type="email"/>
+<input id="contraseña" placeholder="Contraseña" required="" type="password"/>
+<select id="rol" required="">
+<option value="">Selecciona un rol</option>
+<option value="cliente">Cliente</option>
+<option value="vendedor">Vendedor</option>
+<option value="admin">Administrador</option>
+</select>
+<button class="boton-negro" type="submit">Registrar</button>
+</form>
+<button class="boton-negro" onclick="location.href='index.html'">Regresar al Inicio</button>
+<p id="mensaje"></p>
+</div>
+<script>
+    document.getElementById('registroForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      const nombre = document.getElementById('nombre').value;
+      const correo = document.getElementById('correo').value;
+      const contraseña = document.getElementById('contraseña').value;
+      const rol = document.getElementById('rol').value;
+
+      try {
+        const response = await fetch('http://localhost:3000/api/registro', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ nombre, correo, contraseña, rol })
+        });
+
+        const data = await response.json();
+        document.getElementById('mensaje').textContent = response.ok ? data.mensaje : data.error;
+      } catch (err) {
+        document.getElementById('mensaje').textContent = 'Error al conectar con el servidor.';
+      }
+    });
+  </script>
+</body>
+</html>

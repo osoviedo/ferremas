@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <title>Carrito de Compras - FERREMAS</title>
+  <link href="css/carrito.css" rel="stylesheet"/>
+</head>
+<body>
+  <h1>Carrito de Compras FERREMAS</h1>
+
+  <table id="tabla-carrito">
+    <thead>
+      <tr>
+        <th>Producto</th>
+        <th>Imagen</th>
+        <th>Precio Unitario</th>
+        <th>Cantidad</th>
+        <th>Subtotal</th>
+        <th>Acción</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Productos dinámicos -->
+    </tbody>
+  </table>
+
+  <div class="total-container">
+    Total: $<span id="total-carrito">0</span>
+  </div>
+
+  <button class="btn-vaciar" id="vaciar-carrito">Vaciar Carrito</button>
+
+  <div style="margin-top: 60px; display: flex; gap: 15px; justify-content: center;">
+    <button class="btn-seguir" onclick="location.href='catalogo.html'">Seguir comprando</button>
+    <button class="btn-inicio" onclick="location.href='index.html'">Volver al inicio</button>
+  </div>
+
+  <div style="text-align: center;">
+    <button class="btn-pagar" id="btn-pagar">Pagar ahora</button>
+  </div>
+
+  <script src="js/carrito.js"></script>
+</body>
+</html>

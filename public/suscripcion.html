@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<title>Suscripción - FERREMAS</title>
+<link href="css/estilos.css" rel="stylesheet"/>
+
+<link href="css/suscripcion.css" rel="stylesheet"/></head>
+<body>
+<div class="contenedor-suscripcion">
+<h2>Suscríbete</h2>
+<form id="formSuscripcion">
+<input id="correo" placeholder="Correo electrónico" required="" type="email"/>
+<button class="boton-negro" type="submit">Suscribirse</button>
+</form>
+<!-- Botón Regresar al Inicio -->
+<button class="boton-negro" onclick="location.href='index.html'">Regresar al Inicio</button>
+<p id="mensaje"></p>
+</div>
+<script>
+    document.getElementById('formSuscripcion').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const correo = document.getElementById('correo').value;
+      document.getElementById('mensaje').textContent = `¡Felicidades ${correo}! Te has suscrito exitosamente.`;
+    });
+  </script>
+</body>
+</html>
